@@ -73,7 +73,7 @@ open class SurveyViewController: UIViewController {
       }
    }
    
-   public func cancel() {
+   @objc open func cancel() {
       self.dismiss(animated: true, completion: {})
    }
 }
