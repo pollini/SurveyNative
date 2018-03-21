@@ -1292,7 +1292,7 @@ open class SurveyQuestions {
    }
    
    func questionPath(updateId: String) -> QuestionPath {
-      let idArr = updateId.characters.split(separator: ":", omittingEmptySubsequences: false).map(String.init)
+      let idArr = updateId.split(separator: ":", maxSplits: Int.max, omittingEmptySubsequences: false).map(String.init)
       let primaryQuestionIndex = Int(idArr[0])
       let subQuestionIndex = Int(idArr[1])
       let row = Int(idArr[2])
