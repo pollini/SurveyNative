@@ -66,14 +66,14 @@ open class DefaultTableCellDataDelegate : NSObject, TableCellDataDelegate {
    }
    
    func registerForKeyboardNotifications() {
-      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: Notification.Name.UIKeyboardDidShow, object: nil)
-      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
    }
    
    @objc func keyboardWasShown(_ notification: Notification) {
       let info = notification.userInfo
-      if let kbSize = (info?[UIKeyboardFrameBeginUserInfoKey] as? CGRect)?.size {
-         let contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, kbSize.height, 0)
+      if let kbSize = (info?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect)?.size {
+         let contentInsets = UIEdgeInsets.init(top: self.tableView.contentInset.top, left: 0, bottom: kbSize.height, right: 0)
          self.tableView.contentInset = contentInsets
          self.tableView.scrollIndicatorInsets = contentInsets
          
@@ -89,7 +89,7 @@ open class DefaultTableCellDataDelegate : NSObject, TableCellDataDelegate {
    }
    
    @objc func keyboardWillBeHidden(_ notification: Notification) {
-      let contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, 0, 0)
+      let contentInsets = UIEdgeInsets.init(top: self.tableView.contentInset.top, left: 0, bottom: 0, right: 0)
       self.tableView.contentInset = contentInsets
       self.tableView.scrollIndicatorInsets = contentInsets
    }

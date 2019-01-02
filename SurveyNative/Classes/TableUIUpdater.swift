@@ -11,14 +11,14 @@ import Foundation
 // Methods for inserting, removing, and reloading sections of a UITableView
 open class TableUIUpdater {
    
-   static open func setupTable(_ tableView: UITableView) {
+    static public func setupTable(_ tableView: UITableView) {
       tableView.allowsSelection = true
       tableView.separatorStyle = .none
       
       setupFooter(for: tableView)
       
       tableView.estimatedRowHeight = 80
-      tableView.rowHeight = UITableViewAutomaticDimension
+      tableView.rowHeight = UITableView.automaticDimension
       
       registerTableViewCells(tableView)
    }
@@ -78,8 +78,8 @@ open class TableUIUpdater {
             // A small pause helps avoid issues with keyboard dismissal messing up the scroll
             tableView.reloadData()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-               UIView.animate(withDuration: 0.5, delay: 0.02, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                  tableView.scrollToRow(at: changes.scrollPath!, at: UITableViewScrollPosition.top, animated: false)
+               UIView.animate(withDuration: 0.5, delay: 0.02, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+                  tableView.scrollToRow(at: changes.scrollPath!, at: UITableView.ScrollPosition.top, animated: false)
                }, completion: { (success) in
                   // Fixes a bug where sometimes rows don't appear if offscreen
                   // at beginning of scroll

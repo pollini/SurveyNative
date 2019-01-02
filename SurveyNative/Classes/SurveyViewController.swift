@@ -49,7 +49,7 @@ open class SurveyViewController: UIViewController {
       
       self.title = surveyTitle()
       
-      self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(cancel));
+      self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancel));
       
       TableUIUpdater.setupTable(tableView)
       
