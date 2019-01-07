@@ -60,7 +60,7 @@ open class SurveyTableViewDelegate : NSObject, UITableViewDelegate {
       self.heightAtIndexPath[cellKey] = height
    }
    
-   private func key(_ indexPath: IndexPath) -> AnyHashable {
+   public func key(_ indexPath: IndexPath) -> AnyHashable {
       if self.surveyQuestions.isSubmitSection(indexPath: indexPath) {
          return "SubmitQuestion"
       }
