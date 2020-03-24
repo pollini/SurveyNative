@@ -94,7 +94,7 @@ class DynamicLabelTextFieldTableViewCell: UITableViewCell, UITextFieldDelegate, 
    func indexOfDefaultOption() -> Int {
       var defaultOption = 0
       if let metadataId = metadataOptionsId(), let metadataTypeOptions = metadataOptionsTypes(), let selectedDefault = DynamicLabelTextFieldTableViewCell.metadataDefaults[metadataId] {
-         defaultOption = metadataTypeOptions.index(of: selectedDefault) ?? defaultOption
+         defaultOption = metadataTypeOptions.firstIndex(of: selectedDefault) ?? defaultOption
       }
       return defaultOption
    }
@@ -216,7 +216,7 @@ class DynamicLabelTextFieldTableViewCell: UITableViewCell, UITextFieldDelegate, 
          addLabelAndTextField(labelText: label)
       }
       if self.optionsMetadata != nil {
-         let selectedIndex = labelOptions!.index(of: labels)
+         let selectedIndex = labelOptions!.firstIndex(of: labels)
          DynamicLabelTextFieldTableViewCell.metadataDefaults[self.metadataOptionsId()!] = self.metadataOptionsTypes()?[selectedIndex!]
       }
    }

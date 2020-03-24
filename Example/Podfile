@@ -1,4 +1,4 @@
-use_frameworks!
+use_modular_headers!
 
 target 'SurveyNative_Example' do
   pod 'SurveyNative', :path => '../'

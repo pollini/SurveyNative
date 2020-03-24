@@ -1118,7 +1118,7 @@ open class SurveyQuestions {
       var currentAnswer = self.answer(for: questionId) as? [String]
       if currentAnswer == nil {
          currentAnswer = [answerToToggle]
-      } else if let removeIndex = currentAnswer!.index(of: answerToToggle) {
+      } else if let removeIndex = currentAnswer!.firstIndex(of: answerToToggle) {
          currentAnswer!.remove(at: removeIndex)
       } else {
          currentAnswer!.append(answerToToggle)
@@ -1136,7 +1136,7 @@ open class SurveyQuestions {
          self.answerQuestion(questionId, data: currentAnswer!)
          return
       }
-      if currentOtherAnswer != nil, let removeIndex = currentAnswer!.index(of: currentOtherAnswer!) {
+      if currentOtherAnswer != nil, let removeIndex = currentAnswer!.firstIndex(of: currentOtherAnswer!) {
          currentAnswer!.remove(at: removeIndex)
       }
       currentAnswer!.append(newOtherAnswer)
